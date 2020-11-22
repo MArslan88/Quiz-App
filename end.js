@@ -9,7 +9,6 @@ const mostRecentScore = localStorage.getItem('mostRecentScore'); // call the Rec
 const highScores = JSON.parse(localStorage.getItem("highScores")) || []; 
 
 const MAX_HIGH_SCORES = 5;
-console.log(highScores);
 
 finalScore.innerText = mostRecentScore; // display the Recent Score in Final Score H1 tag
 
@@ -39,5 +38,4 @@ saveHighScore = e => {
     localStorage.setItem('highScores', JSON.stringify(highScores));
     window.location.assign("/");
 
-    console.log(highScores);
 }
