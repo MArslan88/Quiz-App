@@ -8,7 +8,7 @@ const mostRecentScore = localStorage.getItem('mostRecentScore'); // call the Rec
 // console.log(JSON.parse(localStorage.getItem("highScores")));
 const highScores = JSON.parse(localStorage.getItem("highScores")) || []; 
 
-const MAX_HIGH_SCORES = 5;
+const MAX_HIGH_SCORES = 10;
 
 finalScore.innerText = mostRecentScore; // display the Recent Score in Final Score H1 tag
 
@@ -23,7 +23,8 @@ saveHighScore = e => {
 
     // object of score
     const score = {
-        score: Math.floor(Math.random()*100),
+        // score: Math.floor(Math.random()*100),
+        score: mostRecentScore,
         name: username.value
     };
     highScores.push(score);    
@@ -33,7 +34,7 @@ saveHighScore = e => {
     // })
     //* if 'b' is higher than the 'a' then put 'b' before 'a' 
     highScores.sort((a,b) => b.score - a.score)
-    highScores.splice(5);
+    highScores.splice(MAX_HIGH_SCORES);
 
     localStorage.setItem('highScores', JSON.stringify(highScores));
     window.location.assign("/");
